@@ -1,6 +1,6 @@
 import os, sys, pygame, time
 import RPi.GPIO as GPIO
-
+from ConfigParser import ConfigParser
 from car import Car
 from pygame import locals
 
@@ -10,7 +10,11 @@ pygame.init()
 
 pygame.joystick.init()
 
-maxSpeed = 30
+config = ConfigParser()
+config.sections()
+config.read('config.ini')
+        
+maxSpeed = config.getint('Config', 'maxSpeed')
 deadZone = 0.1
 
 try:
