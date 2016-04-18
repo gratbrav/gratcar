@@ -1,5 +1,5 @@
 from ConfigParser import ConfigParser
-from motor import Motor
+from engine import Engine
 
 class Car(object):
 
@@ -8,29 +8,29 @@ class Car(object):
         config = ConfigParser()
         config.sections()
         config.read('config.ini')
-        self.motorLeft = Motor(config.getint('MotorLeft', 'A'), config.getint('MotorLeft', 'B'), config.getint('MotorLeft', 'E'), 'MotorLeft')
-        self.motorRight = Motor(config.getint('MotorRight', 'A'), config.getint('MotorRight', 'B'), config.getint('MotorRight', 'E'), 'MotorRight')
+        self.engineLeft = Engine(config.getint('EngineLeft', 'A'), config.getint('EngineLeft', 'B'), config.getint('EngineLeft', 'E'), 'EngineLeft')
+        self.engineRight = Engine(config.getint('EngineRight', 'A'), config.getint('EngineRight', 'B'), config.getint('EngineRight', 'E'), 'EngineRight')
 
-    # stop motor
+    # stop engine
     def stop(self): 
-        self.motorLeft.stop()
-        self.motorRight.stop()
+        self.engineLeft.stop()
+        self.engineRight.stop()
 
     # drive forward
     def forward(self, speed):
-        self.motorLeft.forward(speed)
-        self.motorRight.forward(speed)
+        self.engineLeft.forward(speed)
+        self.engineRight.forward(speed)
 
     # drive backward
     def backward(self, speed):
-        self.motorLeft.backward(speed)
-        self.motorRight.backward(speed)
+        self.engineLeft.backward(speed)
+        self.engineRight.backward(speed)
 
     # turn right
     def turnRight(self, turn):
-        self.motorRight.setTurn(turn)
+        self.engineRight.setTurn(turn)
     
     # turn left
     def turnLeft(self, turn):
-        self.motorLeft.setTurn(turn)
+        self.engineLeft.setTurn(turn)
         
