@@ -20,14 +20,12 @@ class Engine(object):
     
     # stop engine
     def stop(self):
-        # print "stop"
         self.speed = 0
         self.turn = 0
         self.setSpeed()
     
     # drive forward
     def forward(self, speed):
-        # print "forward2"
         self.speed = speed
         GPIO.output(self.engineA, GPIO.HIGH)
         GPIO.output(self.engineB, GPIO.LOW)
