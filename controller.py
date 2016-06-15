@@ -14,6 +14,13 @@ config.read('config.ini')
 maxSpeed = config.getint('Config', 'maxSpeed')
 deadZone = 0.1
 
+#signal: start controller
+mycar.forward(50)
+pygame.time.wait(100)
+mycar.backward(50)
+pygame.time.wait(100)
+mycar.stop()
+
 #find controller
 count = 0
 while (count == 0):
@@ -25,6 +32,13 @@ while (count == 0):
        count = 1
     except pygame.error:
        pygame.quit()
+
+#signal: ready to drive
+mycar.forward(50)
+pygame.time.wait(100)
+mycar.backward(50)
+pygame.time.wait(100)
+mycar.stop()
 
 try:
    j = pygame.joystick.Joystick(0)
