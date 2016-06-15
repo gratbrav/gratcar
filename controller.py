@@ -6,9 +6,6 @@ from pygame import locals
 
 mycar = Car();
 os.environ["SDL_VIDEODRIVER"] = "dummy"
-pygame.init()
-
-pygame.joystick.init()
 
 config = ConfigParser()
 config.sections()
@@ -16,6 +13,18 @@ config.read('config.ini')
         
 maxSpeed = config.getint('Config', 'maxSpeed')
 deadZone = 0.1
+
+#find controller
+count = 0
+while (count == 0):
+    try:
+       pygame.init()
+       pygame.joystick.init()
+       j = pygame.joystick.Joystick(0)
+       j.init() # init instance
+       count = 1
+    except pygame.error:
+       pygame.quit()
 
 try:
    j = pygame.joystick.Joystick(0)
